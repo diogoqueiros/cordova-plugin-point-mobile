@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="cordova-plugin-point-mobile" version="0.0.1"
+    xmlns="http://cordova.apache.org/ns/plugins/1.0">
+    <name>Cordova Plugin Point Mobile</name>
+    <description>Cordova barcode scanning plugin for Point Mobile devices</description>
+    <license>MIT</license>
+    <keywords>cordova,cordova-android,barcode,scanner,point-mobile</keywords>
+    <repo>https://github.com/diogoqueiros/cordova-plugin-point-mobile</repo>
+
+    <js-module name="pointmobile" src="www/pointmobile.js">
+        <clobbers target="cordova.plugins.pointmobile" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="PointMobile">
+                <param name="android-package" value="com.diogoqueiros.PointMobile" />
+            </feature>
+        </config-file>
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+            <receiver android:enabled="true" android:exported="false" android:name="com.diogoqueiros.PointMobile$ScanResultReceiver" android:priority="0">
+                <intent-filter>
+                    <action android:name="device.common.USERMSG" />
+                </intent-filter>
+            </receiver>
+        </config-file>
+        <source-file src="src/android/libs/device.sdk.jar" target-dir="libs" />
+        <source-file src="src/android/PointMobile.java" target-dir="src/com/diogoqueiros" />
+    </platform>
+</plugin>

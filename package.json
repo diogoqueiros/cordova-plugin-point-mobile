@@ -1,0 +1,24 @@
+{
+    "name": "cordova-plugin-point-mobile",
+    "description": "Cordova barcode scanning plugin for Point Mobile devices",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/diogoqueiros/cordova-plugin-point-mobile"
+    },
+    "author": {
+        "name": "Diogo Queirós",
+        "email": "diogoqueiros@outlook.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/diogoqueiros/cordova-plugin-point-mobile/issues"
+    },
+    "keywords": [
+        "cordova",
+        "cordova-android",
+        "barcode",
+        "scanner",
+        "point-mobile"
+    ]
+}
