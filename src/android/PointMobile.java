@@ -9,6 +9,7 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.LOG;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,10 +45,10 @@ public class PointMobile extends CordovaPlugin {
                         JSONObject json = new JSONObject();
 
                         try {
-                            json.put("result", mDecodeResult.toString());
+                            json.put("barcode", mDecodeResult.toString());
                             json.put("type", mDecodeResult.symName);
                         } catch (Exception e) {
-                            LOG.e(LOG_TAG, "Error sending point mobile receiver: " + e.getMessage(), e);
+                            LOG.d("PointMobile", "Error sending point mobile receiver: " + e.getMessage(), e);
                         }
 
                         callbackContext.success(json);
@@ -75,7 +76,7 @@ public class PointMobile extends CordovaPlugin {
             try {
                 this.webView.getContext().unregisterReceiver(this.mScanResultReceiver);
             } catch (Exception e) {
-                LOG.e(LOG_TAG, "Error unregistering point mobile receiver: " + e.getMessage(), e);
+                LOG.d("PointMobile", "Error unregistering point mobile receiver: " + e.getMessage(), e);
             } finally {
                 mScanResultReceiver = null;
             }

@@ -23,10 +23,8 @@ const pointMobile = window.cordova.plugins.pointmobile;
 pointMobile.scan(
     data => {
       console.log('## Point Mobile barcode received -> ', data);
-
-      if (data && data.result) {
-        this.onReadBarcode(data.result);
-      }
+      console.log('barcode: ', data.barcode);
+      console.log('barcode type', data.type);
     },
     error => {
       console.log('## Point Mobile error -> ', error);
