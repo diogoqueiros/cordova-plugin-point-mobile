@@ -24,7 +24,6 @@ public class PointMobile extends CordovaPlugin {
     private static DecodeResult mDecodeResult = new DecodeResult();
     private static CallbackContext callbackContext = null;
     private static ScanResultReceiver mScanResultReceiver = null;
-    private Context mContext;
 
     static {
         mScanner.aDecodeSetResultType(ScanConst.ResultType.DCD_RESULT_USERMSG);
