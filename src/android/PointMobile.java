@@ -10,6 +10,7 @@ import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.LOG;
+import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,7 +40,9 @@ public class PointMobile extends CordovaPlugin {
 
                 if (callbackContext != null) {
                     if (mDecodeResult.symName.equals("READ_FAIL")) {
-                        callbackContext.error("READ_FAIL");
+                        PluginResult result = new PluginResult(PluginResult.Status.ERROR, "READ_FAIL");
+                        result.setKeepCallback(true);
+                        callbackContext.sendPluginResult(result);
                     } else {
                         JSONObject json = new JSONObject();
 
@@ -50,12 +53,16 @@ public class PointMobile extends CordovaPlugin {
                             LOG.d("PointMobile", "Error sending point mobile receiver: " + e.getMessage(), e);
                         }
 
-                        callbackContext.success(json);
+                        PluginResult result = new PluginResult(PluginResult.Status.OK, json);
+                        result.setKeepCallback(true);
+                        callbackContext.sendPluginResult(result);
                     }
                 }
             } else {
                 if (callbackContext != null) {
-                    callbackContext.error("SCANNER_ERROR");
+                    PluginResult result = new PluginResult(PluginResult.Status.ERROR, "SCANNER_ERROR");
+                    result.setKeepCallback(true);
+                    callbackContext.sendPluginResult(result);
                 }
             }
         }
@@ -93,7 +100,9 @@ public class PointMobile extends CordovaPlugin {
             this.onDestroy();
 
             if (this.callbackContext != null) {
-                this.callbackContext.error("USER_CANCEL");
+                PluginResult result = new PluginResult(PluginResult.Status.ERROR, "USER_CANCEL");
+                result.setKeepCallback(true);
+                this.callbackContext.sendPluginResult(result);
                 this.callbackContext = null;
             }
 
