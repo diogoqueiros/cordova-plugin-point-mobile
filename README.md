@@ -8,7 +8,7 @@ Cordova barcode scanning plugin for Point Mobile devices
 ## Installation
 
 ```bash
-cordova plugin add https://github.com/diogoqueiros/cordova-plugin-point-mobile
+cordova plugin add cordova-plugin-point-mobile
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ pointMobile.scan(
     data => {
       console.log('## Point Mobile barcode received -> ', data);
       console.log('barcode: ', data.barcode);
-      console.log('barcode type', data.type);
+      console.log('barcode type: ', data.type);
     },
     error => {
       console.log('## Point Mobile error -> ', error);
