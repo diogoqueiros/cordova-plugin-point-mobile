@@ -11,8 +11,5 @@ Thumbs.db
 # Ignored files & folders
 *.ts
 !*.d.ts
-/src
-tsconfig.json
-tslint.json
 .idea
 .travis.yml
